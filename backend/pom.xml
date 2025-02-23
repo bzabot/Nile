@@ -35,6 +35,19 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-openfeign-core -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-openfeign-core</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.ai</groupId>
 			<artifactId>spring-ai-anthropic-spring-boot-starter</artifactId>
@@ -43,8 +56,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>backend</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -55,6 +73,8 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+
 		</dependencies>
 	</dependencyManagement>
 
