@@ -1,0 +1,18 @@
+/* app.component.css */
+.content {
+    display: flex; /* Enables Flexbox */
+    height: 100vh; /* Full viewport height */
+  }
+  
+.sidebar {
+flex: 0 0 80px; /* Sidebar takes 10% of the screen width */
+background-color: #131313; /* Example background color */
+color: white; /* Example text color */
+}
+
+.chat {
+flex: 1; /* Content takes 90% of the screen width */
+background-color: #202329; /* Example background color */
+padding: 20px;
+border-radius: 50px; /* Optional: Add some padding */
+}

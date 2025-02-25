@@ -1,0 +1,34 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 20% 0 20%;
+    
+    
+}
+
+.messages-container{
+    flex: 0 0 80%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: scroll;
+
+}
+.message-class{
+    
+    margin: 10px 0 10px 0;
+    padding: 10px;
+    
+}
+
+.message-user{
+    background-color: #2E343D;
+    border-radius: 15px;
+}
+
+.msger-inputarea{
+    background-color: #fff;
+    flex: 0 0 20%;
+    
+}
