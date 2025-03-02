@@ -6,26 +6,12 @@
 </div>
 <div class="old__chats">
     @for (chat of chats; track chat) {
-        <a href="#" class="old__chat active">
+        <a href="" class="old__chat" [ngClass]="{'active': selectedChat === chat.chatId}" (click)="onSelect($event, chat.chatId)">
             {{chat.title}}
         </a>
     }
     
-    <!-- <a href="#" class="old__chat">
-        Old chat 1
-    </a>
-    <a href="#" class="old__chat">
-        Old chat 2
-    </a>
-    <a href="#" class="old__chat">
-        Old chat 3
-    </a>
-    <a href="#" class="old__chat">
-        Old chat 4
-    </a>
-    <a href="#" class="old__chat">
-        Old chat 4
-    </a> -->
+  
 </div>
 
 

@@ -1,4 +1,4 @@
 <div class="chat">
-    <app-chat-sidebar class="chat-sidebar" [chats]="chats"></app-chat-sidebar>
-    <app-chat-content class="chat-content"></app-chat-content>
+    <app-chat-sidebar class="chat-sidebar" [chats]="chats" (newItemEvent)="onSelectChat($event)"></app-chat-sidebar>
+    <app-chat-content class="chat-content" [messages]="messages"></app-chat-content>
 </div>
