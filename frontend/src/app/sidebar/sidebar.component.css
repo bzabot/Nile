@@ -1,4 +1,17 @@
 .sidebar{
-    flex: 0 0 10%;
-    
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0 10px 0;
+    align-items: center;
 }
+
+.icon {
+    margin-bottom: 10px;
+}
+
+.icon ion-icon {
+    
+    color: #e3e3e3;
+    font-size: 40px;
+   
+  }

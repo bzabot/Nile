@@ -1,13 +1,5 @@
 
-input,
-button {
-  color: #fff;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  background-color: transparent;
-  outline: none;
-}
+
 
 .search{
     background-color: #2E343D;
@@ -30,7 +22,7 @@ button {
     color: #b3b3b3;
     font-size: 40px;
     padding: 0;
-    margin: 0; /* Green color */
+    margin: 0;
   }
 
 .old__chats{

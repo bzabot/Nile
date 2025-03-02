@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 0 20% 0 20%;
-    
+    padding: 0 15% 0 15%;
+    justify-content: center;
     
 }
 
@@ -12,19 +12,46 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
 
 }
 .message-class{
-    
     margin: 10px 0 10px 0;
-    padding: 10px;
+    display: flex;
     
 }
 
+
+.img{
+    height: 50px;
+    width: 50px;
+    background-color: #ccc;
+    border-radius: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img{
+    width: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.img-user{
+    order: 2;
+    margin-left: 5px;
+}
+
+.msg{
+    padding: 10px;
+    flex: 1;
+    
+}
 .message-user{
     background-color: #2E343D;
     border-radius: 15px;
+    
 }
 
 .msger-inputarea{
@@ -32,3 +59,34 @@
     flex: 0 0 20%;
     
 }
+
+.input{
+    display: flex;
+    height: 100%;
+    background-color: #2E343D;
+    border-radius: 20px;
+    margin: 10px;
+    align-items: center;
+    
+    
+
+}
+
+.text__area{
+    flex: 0 0 90%;
+    padding: 10px;
+    width: 100%;
+    resize: vertical; /* Allows vertical resizing */
+    overflow-y: auto; /* Adds vertical scrollbar if content overflows */
+    white-space: pre-wrap; /* Ensures text wraps to the next line */
+    word-wrap: break-word;
+}
+
+.send__icon ion-icon {
+    color: #b3b3b3;
+    font-size: 25px;
+    padding: 0;
+    margin: 0;
+    flex: 0 0 10%;
+  }
+

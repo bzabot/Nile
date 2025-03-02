@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { searchOutline } from 'ionicons/icons';
+import { Chat } from '../chat.model';
 
 @Component({
   selector: 'app-chat-sidebar',
@@ -14,4 +15,6 @@ export class ChatSidebarComponent {
   constructor() {
     addIcons({ searchOutline });
   }
+
+  @Input() chats: Chat[] = [];
 }

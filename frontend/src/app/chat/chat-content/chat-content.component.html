@@ -1,20 +1,36 @@
 <div class="content">
     <div class="messages-container">       
-          <div class="message-class message-user">
-            <p class="msg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies odio sed mi hendrerit, sed aliquet libero ullamcorper. Nulla ut ligula dictum diam vulputate rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In maximus molestie erat ac rutrum. Pellentesque et sapien eget ipsum volutpat facilisis eget sed velit. 
+
+        @for (message of messages; track message) {
+          <div class="message-class ">
+            <div class="img" [ngClass]="{'img-user': message.isUser}">
+              <img *ngIf="!message.isUser" src="assets/img/avatar1.jpg" alt="Example Image">
+
+            </div>
+            <p class="msg" [ngClass]="{'message-user': message.isUser}" [innerHTML]="message.message">
             </p>
           </div>
-          <div class="message-class">
+        }
+          
+          <!-- <div class="message-class">
+            <div class="img">
+              <img src="assets/img/avatar1.jpg" alt="Example Image">
+            </div>
             <p class="msg">Morbi semper pharetra elit quis hendrerit. Cras nec arcu ut lectus sodales convallis. Sed placerat lacus libero, at convallis nulla malesuada id. Mauris condimentum erat sit amet maximus bibendum. Vestibulum pulvinar, ipsum sed eleifend feugiat, nulla metus imperdiet est, sit amet gravida justo augue et diam. Donec venenatis euismod tellus, nec dapibus sapien egestas vel. Quisque aliquet vehicula ornare. Ut tincidunt vehicula lectus. Nulla id nulla vel purus mattis semper. Morbi egestas eros lorem, ut consequat nisl tincidunt et. Vivamus lacinia, mi in mattis tempor, nibh sapien dignissim purus, vitae sodales velit nisl eget ipsum. Vivamus eu elit nec augue imperdiet venenatis blandit et magna. Proin tincidunt ornare auctor. Nullam ut lectus eget augue aliquam ornare. Donec porttitor augue massa, eget ultricies nunc egestas id.</p>
           </div>
-          <div class="message-class message-user">
-            <p class="msg">Message 1</p>
-          </div>
+          <div class="message-class">
+
+            <div class="img img-user">:)</div>
+            <p class="msg message-user">Message 1</p>
+          </div> -->
     </div>
 
-    <form class="msger-inputarea">
-        <input type="text" class="msger-input" placeholder="Enter your message...">
-        <button type="submit" class="msger-send-btn">Send</button>
+
+    <form class="input" (ngSubmit)="onSubmit()">
+        <input type="text" class="text__area" placeholder="Search..." [(ngModel)]="message" [ngModelOptions]="{standalone: true}">
+        <a (click)="onSubmit()" class="send__icon">
+            <ion-icon name="send-outline" size="100"></ion-icon>
+        </a>
     </form>
+    
 </div>

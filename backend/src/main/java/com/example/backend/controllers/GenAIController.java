@@ -1,21 +1,49 @@
 package com.example.backend.controllers;
 
+import com.example.backend.dtos.MessageRecordDto;
+import com.example.backend.models.ChatModel;
+import com.example.backend.models.MessageModel;
 import com.example.backend.services.ChatService;
+import com.example.backend.services.MessageService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
+import java.util.Objects;
+import java.util.UUID;
 
 @RestController
 public class GenAIController {
 
     private final ChatService chatService;
+    private final MessageService messageService;
+    private static final Logger logger = LoggerFactory.getLogger(GenAIController.class);
+
 
     @Autowired
-    public GenAIController(ChatService chatService) {
+    public GenAIController(ChatService chatService, MessageService messageService) {
         this.chatService = chatService;
+        this.messageService = messageService;
     }
 
+
     @PostMapping("/question")
-    public String getResponseOptions(@RequestBody String question){
+    public MessageRecordDto getResponseOptions(@RequestBody MessageRecordDto message){
+        logger.info("Received message: {}", message);
+
+        // Salva a mensagem no banco de dados
+        messageService.saveMessage(message);
+
+        // Salva a resposta na bd
+        String response = chatService.getResponseOptions(message.message());
+        MessageRecordDto ans = new MessageRecordDto(response, new Date(), false, message.chatId(), message.userId());
+        messageService.saveMessage(ans);
+
+        return ans;
+
+/*
         String prompt =
                 """
                         You are an experienced mathematics professor tasked with solving and reviewing mathematical exercises. Your goal is to provide a clear, step-by-step solution to the given exercise.
@@ -25,7 +53,7 @@ public class GenAIController {
                         <exercise>
                 """
                         +
-                        question
+                Objects.toString(message.message(), "")
                         +
                 """
                         </exercise>
@@ -55,6 +83,8 @@ public class GenAIController {
                         Remember to maintain a professional and educational tone throughout your response. Your goal is to not only solve the problem but also to provide valuable insights that can help improve mathematical understanding and problem-solving skills.
                 """;
         return chatService.getResponseOptions(prompt);
+
+ */
     }
 
 }
