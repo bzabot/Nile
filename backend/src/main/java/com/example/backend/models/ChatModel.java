@@ -28,6 +28,8 @@ public class ChatModel implements Serializable {
     @OneToMany(mappedBy = "message", fetch = FetchType.LAZY)
     private Set<MessageModel> messages = new HashSet<>();
 
+
+
     public Set<MessageModel> getMessages() {
         return messages;
     }

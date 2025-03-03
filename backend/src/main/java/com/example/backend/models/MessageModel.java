@@ -15,6 +15,7 @@ public class MessageModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @Lob
     @Column(nullable = false)
     private String message;
 

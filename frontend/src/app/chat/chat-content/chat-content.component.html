@@ -26,9 +26,9 @@
     </div>
 
 
-    <form class="input" (ngSubmit)="onSubmit()">
+    <form class="input" (ngSubmit)="onSubmit($event)">
         <input type="text" class="text__area" placeholder="Search..." [(ngModel)]="message" [ngModelOptions]="{standalone: true}">
-        <a (click)="onSubmit()" class="send__icon">
+        <a (click)="onSubmit($event)" class="send__icon" href="">
             <ion-icon name="send-outline" size="100"></ion-icon>
         </a>
     </form>

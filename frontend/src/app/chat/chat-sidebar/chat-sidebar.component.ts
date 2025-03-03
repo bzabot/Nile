@@ -1,9 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { searchOutline } from 'ionicons/icons';
-import { Chat } from '../chat.model';
+import { createOutline } from 'ionicons/icons';
+import { Chat } from '../../chat.model';
 import { CommonModule } from '@angular/common';
+import { SharedService } from '../shared.service';
+import { MessagesDataService } from '../../messages-data.service';
+import { ChatDataService } from '../../chat-data.service';
 
 @Component({
   selector: 'app-chat-sidebar',
@@ -12,19 +16,34 @@ import { CommonModule } from '@angular/common';
   templateUrl: './chat-sidebar.component.html',
   styleUrl: './chat-sidebar.component.css',
 })
-export class ChatSidebarComponent {
-  constructor() {
-    addIcons({ searchOutline });
+export class ChatSidebarComponent implements OnInit {
+  chats: Chat[] = [];
+
+  constructor(
+    private messagesData: MessagesDataService,
+    private chatDataService: ChatDataService
+  ) {
+    addIcons({ searchOutline, createOutline });
   }
 
-  @Input() chats: Chat[] = [];
-  @Output() newItemEvent = new EventEmitter<string>();
-
-  selectedChat: string = '';
+  ngOnInit(): void {
+    this.chatDataService.refreshChats();
+    this.chatDataService.chats$.subscribe((chats) => {
+      this.chats = chats;
+    });
+  }
 
   onSelect(event: Event, id: string) {
     event.preventDefault();
-    this.selectedChat = id;
-    this.newItemEvent.emit(this.selectedChat);
+    this.messagesData.newChat(id);
+  }
+
+  newChat(event: Event) {
+    event.preventDefault();
+    this.messagesData.newChat(null);
+  }
+
+  isActiveChat(chatId: string): boolean {
+    return this.messagesData.getChatId() === chatId;
   }
 }

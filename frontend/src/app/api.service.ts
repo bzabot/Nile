@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Chat } from './chat/chat.model';
+import { Chat } from './chat.model';
 import { Message } from './chat/message.model';
 
 export interface MessageRecordDto {
@@ -28,7 +28,7 @@ export class ApiService {
     return this.http.get<Chat[]>(this.apiUrl + 'chats/user/' + user);
   }
 
-  getMessagesByChat(chat: String) {
+  getMessagesByChat(chat: string | null) {
     return this.http.get<Message[]>(this.apiUrl + 'chats/c/' + chat);
   }
 }

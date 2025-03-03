@@ -1,13 +1,24 @@
+.header{
+    display: flex;
+    
+}
 
 
-
-.search{
+.box{
     background-color: #2E343D;
     border-radius: 20px;
     padding: 10px;
     display: flex;
-    align-items: center;
-    margin: 15px;
+    align-items: center; 
+    margin: 5px;  
+}
+.box.search{
+    flex: 0 0 90%;
+}
+.box.create{
+    flex: 0 0 10%;
+    justify-content: center;
+
 }
 
 .search__input{
@@ -23,13 +34,21 @@
     font-size: 40px;
     padding: 0;
     margin: 0;
-  }
+}
+
+
+.create__icon ion-icon {
+    color: #b3b3b3;
+    font-size: 25px;
+    padding: 0;
+    margin: 0;
+}
 
 .old__chats{
+    
     overflow-y:auto;
     display: flex;
     flex-direction: column;
-
 }
 
 .old__chat{

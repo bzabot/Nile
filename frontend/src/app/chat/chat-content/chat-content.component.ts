@@ -1,12 +1,19 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { sendOutline } from 'ionicons/icons';
 import { FormsModule } from '@angular/forms';
-import { ApiService, MessageRecordDto } from '../../api.service';
 import { CommonModule } from '@angular/common';
-import { MarkdownService } from '../../markdown.service';
 import { Message } from '../message.model';
+import { MessagesDataService } from '../../messages-data.service';
+import { ChatDataService } from '../../chat-data.service';
 
 @Component({
   selector: 'app-chat-content',
@@ -15,34 +22,28 @@ import { Message } from '../message.model';
   templateUrl: './chat-content.component.html',
   styleUrl: './chat-content.component.css',
 })
-export class ChatContentComponent {
-  @Input() messages: Message[] = [];
+export class ChatContentComponent implements OnInit {
+  messages: Message[] = [];
   message: string = '';
   htmlContent: string = '';
 
   constructor(
-    private apiService: ApiService,
-    private markdownService: MarkdownService
+    private messagesData: MessagesDataService,
+    private chatDataService: ChatDataService
   ) {
     addIcons({ sendOutline });
   }
 
-  onSubmit() {
-    const chatId = this.messages.length > 0 ? this.messages[0].chatId : null;
-    const messageDto: MessageRecordDto = {
-      message: this.message,
-      timeStamp: new Date(),
-      isUser: true,
-      chatId: chatId,
-      userId: 'f271bb9b-d676-42f0-b6b2-7a6505f45a0e',
-    };
-    this.messages.push(messageDto);
+  ngOnInit() {
+    this.messagesData.messages$.subscribe((messages) => {
+      this.messages = messages;
+    });
+  }
 
-    this.apiService
-      .sendQuestion(messageDto)
-      .subscribe(async (response: MessageRecordDto) => {
-        this.htmlContent = await this.markdownService.parse(response.message);
-        this.messages.push(response);
-      });
+  onSubmit(event: Event) {
+    event.preventDefault();
+    this.messagesData.sendMessage(this.message);
+    this.message = '';
+    this.chatDataService.refreshChats();
   }
 }

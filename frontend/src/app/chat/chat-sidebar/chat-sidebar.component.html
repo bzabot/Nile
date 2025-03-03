@@ -1,17 +1,24 @@
-<div class="search">
-    <div class="search__icon">
-        <ion-icon name="search-outline" size="100"></ion-icon>
+<div class="header">
+    <div class="box search">
+        <div class="search__icon">
+            <ion-icon name="search-outline" size="100"></ion-icon>
+        </div>
+        <input type="text" class="search__input" placeholder="Search...">
     </div>
-    <input type="text" class="search__input" placeholder="Search...">
+
+    <a href="" class="box create create__icon" title="New chat" (click)="newChat($event)">
+        <ion-icon name="create-outline" size="100"></ion-icon>
+    </a>
 </div>
+
 <div class="old__chats">
     @for (chat of chats; track chat) {
-        <a href="" class="old__chat" [ngClass]="{'active': selectedChat === chat.chatId}" (click)="onSelect($event, chat.chatId)">
+        <a href="" class="old__chat" [ngClass]="{'active': isActiveChat(chat.chatId)}" (click)="onSelect($event, chat.chatId)">
             {{chat.title}}
         </a>
-    }
-    
-  
+    }  
 </div>
+
+
 
 

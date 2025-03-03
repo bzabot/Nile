@@ -34,12 +34,13 @@ public class GenAIController {
         logger.info("Received message: {}", message);
 
         // Salva a mensagem no banco de dados
-        messageService.saveMessage(message);
+        // É necessário buscar o chat pois, caso tenha sido a primeira mensagem, é criado um chat novo
+        ChatModel chat = messageService.saveMessage(message);
 
         // Salva a resposta na bd
         String response = chatService.getResponseOptions(message.message());
-        MessageRecordDto ans = new MessageRecordDto(response, new Date(), false, message.chatId(), message.userId());
-        messageService.saveMessage(ans);
+        MessageRecordDto ans = new MessageRecordDto(response, new Date(), false, chat.getId(), message.userId());
+         messageService.saveMessage(ans);
 
         return ans;
 
