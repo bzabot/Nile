@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ChatSidebarComponent } from './chat-sidebar/chat-sidebar.component';
 import { ChatContentComponent } from './chat-content/chat-content.component';
-import { ApiService } from '../api.service';
-import { Chat } from '../chat.model';
-import { Message } from './message.model';
-import { MessageRecordDto } from '../api.service';
-import { MessagesDataService } from '../messages-data.service';
+import { ApiService } from '../services/api.service';
+import { Chat } from '../models/chat.model';
+import { Message } from '../models/message.model';
+import { MessageRecordDto } from '../services/api.service';
+import { MessagesDataService } from '../services/messages-data.service';
 
 @Component({
   selector: 'app-chat',

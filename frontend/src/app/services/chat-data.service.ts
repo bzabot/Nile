@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { Chat } from './chat.model';
+import { Chat } from '../models/chat.model';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Chat } from './chat.model';
-import { Message } from './chat/message.model';
+import { Chat } from '../models/chat.model';
+import { Message } from '../models/message.model';
 
 export interface MessageRecordDto {
   message: string;

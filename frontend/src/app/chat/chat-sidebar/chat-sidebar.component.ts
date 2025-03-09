@@ -3,11 +3,11 @@ import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { searchOutline } from 'ionicons/icons';
 import { createOutline } from 'ionicons/icons';
-import { Chat } from '../../chat.model';
+import { Chat } from '../../models/chat.model';
 import { CommonModule } from '@angular/common';
 import { SharedService } from '../shared.service';
-import { MessagesDataService } from '../../messages-data.service';
-import { ChatDataService } from '../../chat-data.service';
+import { MessagesDataService } from '../../services/messages-data.service';
+import { ChatDataService } from '../../services/chat-data.service';
 
 @Component({
   selector: 'app-chat-sidebar',

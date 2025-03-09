@@ -11,9 +11,9 @@ import { addIcons } from 'ionicons';
 import { sendOutline } from 'ionicons/icons';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Message } from '../message.model';
-import { MessagesDataService } from '../../messages-data.service';
-import { ChatDataService } from '../../chat-data.service';
+import { Message } from '../../models/message.model';
+import { MessagesDataService } from '../../services/messages-data.service';
+import { ChatDataService } from '../../services/chat-data.service';
 
 @Component({
   selector: 'app-chat-content',

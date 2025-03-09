@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Message } from './message.model';
+import { Message } from '../models/message.model';
 import { ApiService } from './api.service';
 import { BehaviorSubject } from 'rxjs';
 
