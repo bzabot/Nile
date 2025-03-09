@@ -1,8 +1,6 @@
 package com.example.backend.services;
 
-import com.example.backend.controllers.GenAIController;
 import com.example.backend.dtos.ChatRecordDto;
-import com.example.backend.models.ChatModel;
 import com.example.backend.repositories.ChatRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
