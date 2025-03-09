@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "TB_CHAT")
-public class ChatModel implements Serializable {
+public class Chat implements Serializable {
     private static final long serialVersionUid = 1L;
 
     @Id
@@ -22,27 +22,27 @@ public class ChatModel implements Serializable {
 
     @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private UserModel user;
+    private User user;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "message", fetch = FetchType.LAZY)
-    private Set<MessageModel> messages = new HashSet<>();
+    private Set<Message> messages = new HashSet<>();
 
 
 
-    public Set<MessageModel> getMessages() {
+    public Set<Message> getMessages() {
         return messages;
     }
 
-    public void setMessages(Set<MessageModel> messages) {
+    public void setMessages(Set<Message> messages) {
         this.messages = messages;
     }
 
-    public UserModel getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserModel user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

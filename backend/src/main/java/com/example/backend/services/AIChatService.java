@@ -7,10 +7,10 @@ import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ChatService {
+public class AIChatService {
     private final ChatModel chatModel;
 
-    public ChatService(ChatModel chatModel) {
+    public AIChatService(ChatModel chatModel) {
         this.chatModel = chatModel;
     }
 

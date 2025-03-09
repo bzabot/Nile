@@ -3,7 +3,7 @@ package com.example.backend.dtos;
 import java.util.Date;
 import java.util.UUID;
 
-public record MessageRecordDto(
+public record MessageDto(
                                String message,
                                Date timeStamp,
                                Boolean isUser,

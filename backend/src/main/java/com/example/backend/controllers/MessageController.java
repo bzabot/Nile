@@ -1,8 +1,8 @@
 package com.example.backend.controllers;
 
-import com.example.backend.dtos.MessageRecordDto;
-import com.example.backend.models.ChatModel;
-import com.example.backend.services.ChatService;
+import com.example.backend.dtos.MessageDto;
+import com.example.backend.models.Chat;
+import com.example.backend.services.AIChatService;
 import com.example.backend.services.MessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,21 +15,21 @@ import java.util.Date;
  * REST controller for handling message-related requests.
  */
 @RestController
-public class MessagesController {
+public class MessageController {
 
-    private final ChatService chatService;
+    private final AIChatService AIChatService;
     private final MessageService messageService;
-    private static final Logger logger = LoggerFactory.getLogger(MessagesController.class);
+    private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
 
     /**
      * Constructor for MessagesController.
      *
-     * @param chatService the service for handling chat-related operations
+     * @param AIChatService the service for handling chat-related operations
      * @param messageService the service for handling message-related operations
      */
     @Autowired
-    public MessagesController(ChatService chatService, MessageService messageService) {
-        this.chatService = chatService;
+    public MessageController(AIChatService AIChatService, MessageService messageService) {
+        this.AIChatService = AIChatService;
         this.messageService = messageService;
     }
 
@@ -40,16 +40,15 @@ public class MessagesController {
      * @return the response message with options
      */
     @PostMapping("/question")
-    public MessageRecordDto getResponseOptions(@RequestBody MessageRecordDto message) {
-        logger.info("Received message: {}", message);
+    public MessageDto getResponseOptions(@RequestBody MessageDto message) {
 
         // Save the message in the database
         // If this is the first message, a new chat is created
-        ChatModel chat = messageService.saveMessage(message);
+        Chat chat = messageService.saveMessage(message);
 
         // Get response options for the message
-        String response = chatService.getResponseOptions(message.message());
-        MessageRecordDto ans = new MessageRecordDto(response, new Date(), false, chat.getId(), message.userId());
+        String response = AIChatService.getResponseOptions(message.message());
+        MessageDto ans = new MessageDto(response, new Date(), false, chat.getId(), message.userId());
 
         // Save the response in the database
         messageService.saveMessage(ans);

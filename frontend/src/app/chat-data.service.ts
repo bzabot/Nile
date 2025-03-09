@@ -21,7 +21,6 @@ export class ChatDataService {
       },
       (error) => {
         console.error('Error fetching chats:', error);
-        // Handle the error here
       }
     );
   }

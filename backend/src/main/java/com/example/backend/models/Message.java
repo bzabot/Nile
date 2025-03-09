@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "TB_MESSAGE")
-public class MessageModel implements Serializable {
+public class Message implements Serializable {
     private static final long serialVersionUid = 1L;
 
     @Id
@@ -26,13 +26,13 @@ public class MessageModel implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chat_id")
-    private ChatModel chat;
+    private Chat chat;
 
-    public ChatModel getChat() {
+    public Chat getChat() {
         return chat;
     }
 
-    public void setChat(ChatModel chat) {
+    public void setChat(Chat chat) {
         this.chat = chat;
     }
 
